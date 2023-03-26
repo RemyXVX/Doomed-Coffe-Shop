@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Doomed Coffee Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### By **Remy Flores**
 
-## Available Scripts
+#### **Doomed Coffee Shop**
 
-In the project directory, you can run:
+## Technologies Used
+* VSCode
+* GitBash
+* React.js
+* Babel
+* ESLint
+* Bootstrap
 
-### `npm start`
+## Description
+_Creating a web application for Doomed Coffee Shop where users can order coffee and other treats online._
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Webpage
+* [https://github.com/RemyXVX/Doomed-Coffe-Shop]
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup/Installation Requirements
+* _Chrome web browser for best compatibility_
+* _Have a prompt and editor to apply changes, like VSCode and Gitbash_
 
-### `npm test`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Download here for VScode](https://code.visualstudio.com/download)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Download here for Gitbash](https://git-scm.com/downloads)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* _Installation of Node.js and npm_
 
-### `npm run build`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Download here](https://nodejs.org/en/download/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Step by step breakdown on how to run application:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<big>Copy by running:</big>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git clone "https://github.com/RemyXVX/Doomed-Coffe-Shop"
+```
 
-### `npm run eject`
+<big>I would recommend also setting up your work environment after cloning by:</big>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<big>Once we have the program started, run:</big>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<big>Now you can access the application in your web browser at `http://localhost:3000`.</big>
 
-## Learn More
+## Known Bugs
+* _Still a work in progress. CUrrently have issues with my React build._
+* _If I missed something or a bug is found, send me an email to remyfranciscoflores@gmail.com_
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+* **SEE LICENSE [HERE](./LICENSE)** 
+```

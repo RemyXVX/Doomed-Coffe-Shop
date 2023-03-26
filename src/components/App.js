@@ -1,6 +1,11 @@
+import React from "react";
+import Header from "./Header";
+
 function App() {
   return (
-    "hello world, this be coffee shop"
+    <React.Fragment>
+      <Header />
+    </React.Fragment>
   );
 }
 
