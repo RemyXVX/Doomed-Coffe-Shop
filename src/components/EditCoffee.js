@@ -10,7 +10,7 @@ const EditCoffeeForm = (props) => {
     props.onEditCoffee({
       names: event.target.name.value,
       origin: event.target.origin.value,
-      price: event.target.price.value,
+      // price: event.target.price.value,
       roast: event.target.roast.value,
       quantity: event.target.quantity.value,
       id: coffee.id
@@ -30,3 +30,5 @@ EditCoffeeForm.propTypes = {
   coffee : PropTypes.object,
   onEditCoffee: PropTypes.func
 }
+
+export default EditCoffeeForm;
