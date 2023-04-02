@@ -24,7 +24,7 @@ class CoffeeControl extends React.Component {
         editing: false
       });
     } else {
-      this.setState(prevState => ( {
+      this.setState(prevState => ({
         formVisibleOnPage: !prevState.formVisibleOnPage
       }));
     };
@@ -64,7 +64,9 @@ class CoffeeControl extends React.Component {
     this.setState({
       mainCoffeeList: newMainCoffeeList,
       selectedCoffee: null
-    })
+    });
+
+
   }
 
   render() {
@@ -74,7 +76,7 @@ class CoffeeControl extends React.Component {
     if (this.state.editing){
       currentlyVisibleState = <EditCoffee
                                 coffee={this.state.selectedCoffee}
-                                onEditTicket={this.handleEditingCoffeeInList} />
+                                onEditCoffee={this.handleEditingCoffeeInList} />
       buttonText= "Return To List";
     } else if (this.state.selectedCoffee != null){
       currentlyVisibleState = <CoffeeDetail
@@ -86,7 +88,10 @@ class CoffeeControl extends React.Component {
       currentlyVisibleState = <NewCoffeeForm onNewCoffeeCreation={this.handleAddingNewCoffeeToList} />
       buttonText="Return To List"
     } else {
-      currentlyVisibleState = <CoffeeList coffeeList={this.state.mainCoffeeList} />
+      currentlyVisibleState = <CoffeeList 
+                                coffeeList={this.state.mainCoffeeList}
+                                selectedCoffee={this.handleChangeSelectedCoffee}
+                                />
       buttonText="Add Coffee"
     }
   

@@ -2,17 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 import ReuseableCoffeeForm from "./ReuseableCoffeeForm";
 
-const EditCoffeeForm = (props) => {
+const EditCoffee = (props) => {
   const { coffee } = props;
 
   const handleEditCoffeeFormSubmission = (event) => {
     event.preventDefault();
+    const names = event.target.name.value.trim();
+    const origin = event.target.origin.value.trim();
+    const roast = event.target.roast.value.trim();
+    //const price: event.target.price.value.trim();
+    const quantity = parseInt(event.target.quantity.value.trim());
+
+    if (!names || !origin || !roast || !quantity) {
+      // Display an error message if any field is empty
+      alert("Please fill in all fields.");
+      return;
+    }
+
     props.onEditCoffee({
-      names: event.target.name.value,
-      origin: event.target.origin.value,
-      // price: event.target.price.value,
-      roast: event.target.roast.value,
-      quantity: event.target.quantity.value,
+      names: names,
+      origin: origin,
+      roast: roast,
+      quantity: quantity,
       id: coffee.id
     });
   }
@@ -26,9 +37,9 @@ const EditCoffeeForm = (props) => {
   );
 }
 
-EditCoffeeForm.propTypes = {
+EditCoffee.propTypes = {
   coffee : PropTypes.object,
   onEditCoffee: PropTypes.func
 }
 
-export default EditCoffeeForm;
+export default EditCoffee;

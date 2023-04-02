@@ -1,26 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import ReuseableCoffeeForm from "./ReuseableCoffeeForm";
 import { v4 } from "uuid";
 
 const NewCoffeeForm = (props) => {
+  const [nameError, setNameError] = useState('');
+  const [originError, setOriginError] = useState('');
+  const [roastError, setRoastError] = useState('');
+  const [quantityError, setQuantityError] = useState('');
+
   const handleNewCoffeeFormSubmission = (event) => {
     event.preventDefault();
 
-    console.log('Name: ', event.target.name.value);
-    console.log('Origin: ', event.target.origin.value);
-    // console.log('Price: ', event.target.price.value);
-    console.log('Roast: ', event.target.roast.value);
-    console.log('Quantity: ', event.target.quantity.value);
+    const name = event.target.name.value.trim();
+    const origin = event.target.origin.value.trim();
+    const roast = event.target.roast.value.trim();
+    const quantity = parseInt(event.target.quantity.value);
 
-    props.onNewCoffeeCreation({
-      name: event.target.name.value,
-      origin: event.target.origin.value,
-      // price: event.target.price.value,
-      roast: event.target.roast.value,
-      quantity: parseInt(event.target.quantity.value),
-      id: v4()
-    })
+    let hasErrors = false;
+
+    if (!name) {
+      setNameError('Name is required');
+      hasErrors = true;
+    } else {
+      setNameError('');
+    }
+
+    if (!origin) {
+      setOriginError('Origin is required');
+      hasErrors = true;
+    } else {
+      setOriginError('');
+    }
+
+    if (!roast) {
+      setRoastError('Roast is required');
+      hasErrors = true;
+    } else {
+      setRoastError('');
+    }
+
+    if (isNaN(quantity) || quantity <= 0) {
+      setQuantityError('Quantity must be a positive integer');
+      hasErrors = true;
+    } else {
+      setQuantityError('');
+    }
+
+    if (!hasErrors) {
+      props.onNewCoffeeCreation({
+        name: name,
+        origin: origin,
+        roast: roast,
+        quantity: quantity,
+        id: v4()
+      });
+
+      event.target.reset();
+    }
   }
 
   return (
@@ -29,6 +66,11 @@ const NewCoffeeForm = (props) => {
       <ReuseableCoffeeForm 
         formSubmissionHandler={handleNewCoffeeFormSubmission}
         buttonText="Submit"/>
+
+      {nameError && <div>{nameError}</div>}
+      {originError && <div>{originError}</div>}
+      {roastError && <div>{roastError}</div>}
+      {quantityError && <div>{quantityError}</div>}
     </React.Fragment>
   );
 }
