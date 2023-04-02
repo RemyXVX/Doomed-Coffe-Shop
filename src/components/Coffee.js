@@ -16,9 +16,11 @@ const Coffee = (props) => {
 }
 
 Coffee.propTypes = {
-  names: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  amount: PropTypes.string.isRequired
+  names: PropTypes.string,
+  origin: PropTypes.string,
+  price: PropTypes.number,
+  roast: PropTypes.string,
+  quantity: PropTypes.number
 }
 
 export default Coffee;
