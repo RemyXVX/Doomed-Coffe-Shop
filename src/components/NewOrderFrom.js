@@ -6,8 +6,9 @@ const NewCoffeeForm = () => {
     event.preventDefault();
     props.onNewCoffeeCreation({
       name: event.target.name.value,
-      location: event.target.location.value,
-      amount: event.target.amount.value,
+      origin: event.target.origin.value,
+      price: event.target.price.value,
+      roast: event.target.roast.value,
     })
   }
 

@@ -5,9 +5,11 @@ const Coffee = (props) => {
   return (
     <React.Fragment>
       <div>
-        <h3>Bean type: {props.names}</h3>
-        <span>To : {props.location}</span>
-        <span>for the amount of {props.amount}</span>
+        <h3>Your Name: {props.names}</h3>
+        <span>Roast : {props.roast}</span>
+        <span>for the amount of {props.price}</span>
+        <br></br>
+        <span>this batch came from {props.origin}</span>
       </div>
     </React.Fragment>
   )
