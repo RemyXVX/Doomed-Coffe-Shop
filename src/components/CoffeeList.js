@@ -6,21 +6,21 @@ const CoffeeList = (props) => {
   return (
     <React.Fragment>
       <hr />
-      {props.coffeeList.map((coffee, index) =>
-      <Coffee
-        names = {coffee.names}
-        origin = {coffee.origin}
-        price = {coffee.price}
-        roast = {props.roast}
-        quantity = {props.quantity}
-        key = {index}
-        />  
+      {props.coffeeList.map((coffee, index) => 
+        <Coffee
+          names = {coffee.name}
+          origin = {coffee.origin}
+          price = {coffee.price}
+          roast = {coffee.roast}
+          quantity = {coffee.quantity}
+          key = {index}
+          />  
       )}
     </React.Fragment>
   )
 }
 
-CoffeeList.PropTypes = {
+CoffeeList.propTypes = {
   coffeeList: PropTypes.array
 };
 

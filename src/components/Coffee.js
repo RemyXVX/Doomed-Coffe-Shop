@@ -6,10 +6,13 @@ const Coffee = (props) => {
     <React.Fragment>
       <div>
         <h3>Your Name: {props.names}</h3>
-        <span>Roast : {props.roast}</span>
-        <span>for the amount of {props.price}</span>
+        <span>{props.quantity} bag(s) of</span>
         <br></br>
-        <span>this batch came from {props.origin}</span>
+        <span>Roast : {props.roast}</span>
+        <br></br>
+        <span>for the amount of ${props.price}</span>
+        <br></br><br></br>
+        <span>& this batch came from {props.origin}</span>
       </div>
     </React.Fragment>
   )
