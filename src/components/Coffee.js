@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Coffee = (props) => {
   return (
     <React.Fragment>
-      <div>
+      <div onClick={() => props.clickedOnCoffee(props.id)}>
         <h3>Your Name: {props.names}</h3>
         <span>{props.quantity} bag(s) of</span>
         <br></br>
@@ -14,6 +14,7 @@ const Coffee = (props) => {
         <br></br><br></br>
         <span>& this batch came from {props.origin}</span>
       </div>
+      <button onClick={() => props.soldClickOnCoffee(props.id)}>Sell</button>
     </React.Fragment>
   )
 }
@@ -23,7 +24,10 @@ Coffee.propTypes = {
   origin: PropTypes.string,
   price: PropTypes.number,
   roast: PropTypes.string,
-  quantity: PropTypes.number
+  quantity: PropTypes.number,
+  id: PropTypes.string,
+  clickedOnCoffee: PropTypes.func,
+  soldClickOnCoffee: PropTypes.func
 }
 
 export default Coffee;
