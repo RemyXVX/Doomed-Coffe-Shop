@@ -36,4 +36,5 @@ const NewCoffeeForm = (props) => {
 NewCoffeeForm.propTypes = {
   onNewCoffeeCreation: PropTypes.func
 }
+
 export default NewCoffeeForm;
