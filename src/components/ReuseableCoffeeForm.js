@@ -10,7 +10,7 @@ const ReuseableCoffeeForm = (props) => {
             <label>Your Name: </label>
             <input
               type = "text"
-              name = "name"
+              name = "names"
               placeholder = "Your name:" />
           </div>
           <div>

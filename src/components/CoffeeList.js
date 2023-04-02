@@ -8,9 +8,9 @@ const CoffeeList = (props) => {
       <hr />
       {props.coffeeList.map((coffee) => 
         <Coffee
-          names = {coffee.name}
+          names = {coffee.names}
           origin = {coffee.origin}
-          price = {coffee.price}
+          // price = {coffee.price}
           roast = {coffee.roast}
           quantity = {coffee.quantity}
           id = {coffee.id}

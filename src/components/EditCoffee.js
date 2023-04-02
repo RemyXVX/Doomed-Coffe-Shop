@@ -7,14 +7,13 @@ const EditCoffee = (props) => {
 
   const handleEditCoffeeFormSubmission = (event) => {
     event.preventDefault();
-    const names = event.target.name.value.trim();
-    const origin = event.target.origin.value.trim();
-    const roast = event.target.roast.value.trim();
-    //const price: event.target.price.value.trim();
-    const quantity = parseInt(event.target.quantity.value.trim());
+    const names = event.target.names.value;
+    const origin = event.target.origin.value;
+    const roast = event.target.roast.value;
+    //const price: event.target.price.value
+    const quantity = parseInt(event.target.quantity.value);
 
     if (!names || !origin || !roast || !quantity) {
-      // Display an error message if any field is empty
       alert("Please fill in all fields.");
       return;
     }

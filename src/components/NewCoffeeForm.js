@@ -12,14 +12,14 @@ const NewCoffeeForm = (props) => {
   const handleNewCoffeeFormSubmission = (event) => {
     event.preventDefault();
 
-    const name = event.target.name.value.trim();
+    const names = event.target.names.value.trim();
     const origin = event.target.origin.value.trim();
     const roast = event.target.roast.value.trim();
     const quantity = parseInt(event.target.quantity.value);
 
     let hasErrors = false;
 
-    if (!name) {
+    if (!names) {
       setNameError('Name is required');
       hasErrors = true;
     } else {
@@ -49,7 +49,7 @@ const NewCoffeeForm = (props) => {
 
     if (!hasErrors) {
       props.onNewCoffeeCreation({
-        name: name,
+        names: names,
         origin: origin,
         roast: roast,
         quantity: quantity,
