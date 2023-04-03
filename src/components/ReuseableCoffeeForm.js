@@ -45,14 +45,20 @@ const ReuseableCoffeeForm = (props) => {
               name = "quantity"
               placeholder = "How many bags?" />
           </div>
-          <button type = "submit">{props.buttonText}</button>
-          {/* <div>
-            <label>Total: </label>
-            <input
+          <div>
+            <label>Size: </label>
+            <select
               type = "number"
               name = "price"
-              placeholder = "Total cost.." />
-          </div> */}
+              placeholder = "Total cost..">
+                <option> </option>
+                <option value="4">Small</option>
+                <option value="9">Medium</option>
+                <option value="20">Large</option>
+                <option value="35">CHONK</option>
+              </select>
+          </div>
+          <button type = "submit">{props.buttonText}</button>
         </form>
         <br></br>
       </div>
