@@ -6,19 +6,23 @@ const CoffeeList = (props) => {
   return (
     <React.Fragment>
       <hr />
-      {props.coffeeList.map((coffee) => 
-        <Coffee
-          names = {coffee.names}
-          origin = {coffee.origin}
-          // price = {coffee.price}
-          roast = {coffee.roast}
-          quantity = {coffee.quantity}
-          id = {coffee.id}
-          key = {coffee.id} 
-          clickedOnCoffee = {props.selectedCoffee}
-          soldClickOnCoffee = {props.soldClickOnCoffee}
+      {props.coffeeList.map((coffee) => {
+        const totalPrice = coffee.price * coffee.quantity;
+        return (
+          <Coffee
+            names = {coffee.names}
+            quantity = {coffee.quantity}
+            roast = {coffee.roast}
+            price = {coffee.price}
+            totalPrice = {totalPrice}
+            origin = {coffee.origin}
+            id = {coffee.id}
+            key = {coffee.id} 
+            clickedOnCoffee = {props.selectedCoffee}
+            soldClickOnCoffee = {props.soldClickOnCoffee}
           />  
-      )}
+        );
+      })}
     </React.Fragment>
   )
 }

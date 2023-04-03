@@ -5,29 +5,33 @@ const Coffee = (props) => {
   return (
     <React.Fragment>
       <div onClick={() => props.clickedOnCoffee(props.id)}>
-        <h3>Your Name: {props.names}</h3>
-        <span>{props.quantity} bag(s) of</span>
+        <span>Your Name: {props.names}</span>
+        <br></br>
+        <span>Amount: {props.quantity === 0 ? 'Sold Out' : `${props.quantity} ${props.quantity > 1 ? 'bags' : 'bag'}`}</span>
+
         <br></br>
         <span>Roast : {props.roast}</span>
         <br></br>
-        <span>for the amount of ${props.price}</span>
-        <br></br><br></br>
-        <span>& this batch came from {props.origin}</span>
+        <span>Total: ${props.totalPrice.toFixed(2)}</span>
+        <br></br>
+        <span>& batch came from {props.origin}</span>
       </div>
+      <br></br>
       <button onClick={() => props.soldClickOnCoffee(props.id)}>Sell</button>
     </React.Fragment>
   )
 }
 
 Coffee.propTypes = {
-  names: PropTypes.string,
-  origin: PropTypes.string,
-  price: PropTypes.number,
-  roast: PropTypes.string,
-  quantity: PropTypes.number,
-  id: PropTypes.string,
-  clickedOnCoffee: PropTypes.func,
-  soldClickOnCoffee: PropTypes.func
-}
+  names: PropTypes.string.isRequired,
+  origin: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  roast: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  clickedOnCoffee: PropTypes.func.isRequired,
+  soldClickOnCoffee: PropTypes.func.isRequired,
+};
+
 
 export default Coffee;
