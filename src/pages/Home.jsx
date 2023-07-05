@@ -22,7 +22,7 @@ const Home = () => {
               Short information about our beans goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               condimentum, libero a fermentum dapibus, leo sem vestibulum lacus, sed dapibus velit diam a justo.
             </Text>
-            <ChakraLink as={Link} to="/another-page" fontSize="lg" fontWeight="bold" mt={4}>
+            <ChakraLink as={Link} to="/Story" fontSize="lg" fontWeight="bold" mt={4}>
               Learn More <ArrowForwardIcon ml={2} />
             </ChakraLink>
           </Flex>
@@ -37,7 +37,7 @@ const Home = () => {
               Saturday: 9:00 AM - 5:00 PM <br />
               Sunday: Closed
             </Text>
-            <ChakraLink as={Link} to="/contact" fontSize="lg" fontWeight="bold" mt={4}>
+            <ChakraLink as={Link} to="/Contact" fontSize="lg" fontWeight="bold" mt={4}>
               Contact Us <ArrowForwardIcon ml={2} />
             </ChakraLink>
           </Flex>
