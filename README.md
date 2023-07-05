@@ -30,7 +30,7 @@ _Creating a web application for Doomed Coffee Shop where users can order coffee 
 <br><br>
 _How we got there is by our step by step creation_ 
 <br><small><span style="color:pink">see flowchat bellow</small>
-![Alt text](src/components/img/flowchart_coffee_shop.png)
+![Alt text](./src/assets/images/flowchart_coffee_shop.png)
 
 ## <a name="3" id="3"></a><span style="color: Pink">Webpage
 * [https://github.com/RemyXVX/Doomed-Coffe-Shop]()

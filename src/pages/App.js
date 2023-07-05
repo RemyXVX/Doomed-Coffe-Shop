@@ -1,12 +1,10 @@
-import React from "react";
-import Header from "./Header";
-import CoffeeControl from "./CoffeeControl";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../index.css';
+import Header from "../components/Header";
+import CoffeeControl from "../components/CoffeeControl";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   return (
-    <React.Fragment>
+    <ChakraProvider>
       <div class="container">
         <div class="first">
           <div class="second">
@@ -15,7 +13,7 @@ function App() {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </ChakraProvider>
   );
 }
 
