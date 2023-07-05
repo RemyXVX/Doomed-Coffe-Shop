@@ -7,29 +7,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.container {
-  background-color: antiquewhite;
-}
-
-.header {
-  background-color: burlywood;
-  margin-bottom: -17px;
-  text-align: center;
-}
-
-.first {
-  height:  35vw;
-  width: 26vw;
-  border: 1px solid black;
-  margin: auto;
-  overflow: auto;
-}
-
-.second {
-  
-}
