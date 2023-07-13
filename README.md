@@ -23,7 +23,6 @@
 * React.js
 * Babel
 * ESLint
-* Bootstrap
 
 ## <a name="2" id="2"></a><span style="color: Pink">Description
 _Creating a web application for Doomed Coffee Shop where users can order coffee and other treats online. The app allows users to place an order, and every time they click the sell button, the quantity of the coffee decreases by 1._
