@@ -1,10 +1,31 @@
-import { Box, Flex, Image, Text, VStack, Link as ChakraLink, Container } from "@chakra-ui/react";
+import React from "react";
+import {
+  Box,
+  Flex,
+  Image,
+  Text,
+  VStack,
+  Link as ChakraLink,
+  Container,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import Carousel from "./Carousel";
 
-import coffeeBackground from './../assets/images/coffeebackground.jpg';
+import coffeeBackground from './../../assets/images/coffeebackground.jpg';
+import pourover from './../../assets/images/pourover.png';
+import scoopbagbean from './../../assets/images/scoopbagbean.png';
+import cupwbean from './../../assets/images/cupwbeans.png';
+import express from './../../assets/images/express.png';
+import basiccoffee from './../../assets/images/basiccoffee.png'
 
 const Home = () => {
+  const images = [pourover, scoopbagbean, cupwbean, express];
+
+  const imageMaxHeight = useBreakpointValue({ base: "150px", sm: "250px" });
+  const imageBorderRadius = useBreakpointValue({ base: "6px", sm: "8px" });
+
   return (
     <Flex direction="column" align="center">
       <Image src={coffeeBackground} maxW="100%" h="550px" objectFit="cover" alt="A brown background with a stencil of a table and a coffee cup on it" />
@@ -38,6 +59,17 @@ const Home = () => {
               Hours of Operation
             </Text>
             <Text mt={2} textAlign="center">
+              <Image
+                src={basiccoffee}
+                style={{
+                  width: "100%",
+                  objectFit: "cover",
+                  maxHeight: imageMaxHeight,
+                  height: "auto",
+                  borderRadius: imageBorderRadius,
+                }}
+                alt="Basic Coffee"
+              />
               Monday - Friday: 8:00 AM - 6:00 PM <br />
               Saturday: 9:00 AM - 5:00 PM <br />
               Sunday: Closed
@@ -54,6 +86,7 @@ const Home = () => {
             <Text mt={2} textAlign="center">
               Sign up for our newsletter to receive hot deals and ensure your coffee shops never run out of coffee.
             </Text>
+            <Carousel images={images} />
             <ChakraLink as={Link} to="/Login" fontSize="lg" fontWeight="bold" mt={4}>
               Sign Up Now <ArrowForwardIcon ml={2} />
             </ChakraLink>

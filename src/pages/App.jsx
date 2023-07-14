@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Box, ChakraProvider, extendTheme } from '@chakra-ui/react';
-import Home from './Home';
-import Contact from './Contact';
-import About from './About';
+import Home from './Home/Home';
+import Contact from './Contact/Contact';
+import About from './About/About';
 import Login from './Account/Login';
 import Ordering from './Order/Ordering';
 import Navbar from '../components/NavBar';
