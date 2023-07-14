@@ -26,7 +26,7 @@ const User = () => {
     const fetchUser = async () => {
       try {
         const { data, error } = await supabase
-          .from("userprofile")
+          .from("auth.users")
           .select("email")
           .eq("id", user.id)
           .single();
@@ -92,6 +92,8 @@ const User = () => {
   };
 
   return (
+    <>
+    <div>hello world</div>
     <Box py={8} px={4}>
       <Flex direction="column" align="center">
         <Text fontSize="3xl" fontWeight="bold" mb={4}>
@@ -120,6 +122,7 @@ const User = () => {
         </VStack>
       </Flex>
     </Box>
+    </>
   );
 };
 

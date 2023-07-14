@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Box, ChakraProvider, extendTheme } from '@chakra-ui/react';
+
 import Home from './Home/Home';
 import Contact from './Contact/Contact';
 import About from './About/About';
 import Login from './Account/Login';
 import Ordering from './Order/Ordering';
-import Navbar from '../components/NavBar';
+import Navbar from './../components/NavBar';
+import User from './Account/Login';
+
 import { CartProvider } from '../components/CartStore';
 import bgbeans from './../assets/images/bgbeans.png'
 
@@ -43,6 +46,7 @@ const App = () => {
                 <Route exact path="/Contact" element={<Contact />} />
                 <Route exact path="/Ordering" element={<Ordering />} />
                 <Route exact path="/Login/*" element={<Login />} />
+                <Route exact path="/User/" element={<User />} />
               </Routes>
             </Router>
           </Box>

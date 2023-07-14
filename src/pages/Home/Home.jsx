@@ -28,7 +28,13 @@ const Home = () => {
 
   return (
     <Flex direction="column" align="center">
-      <Image src={coffeeBackground} maxW="100%" h="550px" objectFit="cover" alt="A brown background with a stencil of a table and a coffee cup on it" />
+      <Image 
+        src={coffeeBackground} 
+        maxW="100%" 
+        h="550px" 
+        objectFit="cover" 
+        alt="A brown background with a stencil of a table and a coffee cup on it" 
+      />
       <Container maxW="xl" bg="#EFEFEF" borderRadius="md" p={1} mt={4}>
         <VStack spacing={4} align="stretch">
           <Box>

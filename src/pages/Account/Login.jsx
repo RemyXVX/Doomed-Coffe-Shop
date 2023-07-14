@@ -14,15 +14,16 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { EmailIcon, LockIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
+const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const Login = () => {
-  const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
-  const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
-  const supabase = createClient(supabaseUrl, supabaseKey);
   const toast = useToast();
 
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [email, setEmail] = useState("");
@@ -61,43 +62,80 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (
       (isLoginForm && (email === "" || password === "")) ||
-      (!isLoginForm && (email === "" || password === "" || firstName === "" || lastName === "" || passwordConfirm === ""))
+      (!isLoginForm &&
+        (email === "" ||
+          password === "" ||
+          firstName === "" ||
+          lastName === "" ||
+          passwordConfirm === ""))
     ) {
-      showToast("Error", isLoginForm ? "Please provide your email and password." : "Please fill in all fields.", "error");
+      showToast(
+        "Error",
+        isLoginForm ? "Please provide your email and password." : "Please fill in all fields.",
+        "error"
+      );
       return;
     }
-
+  
     try {
-      let error;
       if (isLoginForm) {
-        ({ error } = await supabase.auth.signIn({ email, password }));
-      } else {
-        ({ error } = await supabase.auth.signUp({ email, password }));
-        if (!error) {
-          const { user, error } = await supabase
-            .from('userprofile')
-            .insert([
-              { email, firstname: firstName, lastname: lastName }
-            ]);
-          if (error) {
-            showToast("Error", error.message, "error");
-            return;
-          }
+        const { user, error } = await supabase.auth.signIn({ email, password });
+  
+        if (error) {
+          showToast("Error", error.message, "error");
+          return;
         }
+  
+        showToast("Success", "You have successfully logged in.", "success");
+  
+        navigate("/user"); // Redirect to the User page
+      } else {
+        const { data: existingUser, error: existingUserError } = await supabase
+          .from("auth.users")
+          .select("*")
+          .eq("email", email)
+          .single();
+  
+        if (existingUserError) {
+          showToast("Error", existingUserError.message, "error");
+          return;
+        }
+  
+        if (existingUser) {
+          showToast("Error", "Email already exists. Please use a different email.", "error");
+          return;
+        }
+  
+        // Proceed with sign up
+        const { user, error } = await supabase.auth.signUp({ email, password });
+  
+        if (error) {
+          showToast("Error", error.message, "error");
+          return;
+        }
+  
+        const { data: newUser, insertError } = await supabase
+          .from("auth.users")
+          .insert([{ email, firstname: firstName, lastname: lastName }])
+          .single();
+  
+        if (insertError) {
+          showToast("Error", insertError.message, "error");
+          return;
+        }
+  
+        showToast("Success", "You have successfully signed up.", "success");
+  
+        navigate("/user"); // Redirect to the User page
       }
-      if (error) {
-        showToast("Error", error.message, "error");
-        return;
-      }
-      showToast("Success", isLoginForm ? "You have successfully logged in." : "You have successfully signed up.", "success");
-      history.push("/user");
     } catch (error) {
       showToast("Error", error.message, "error");
     }
   };
+  
 
   return (
     <Box py={8} px={4}>
@@ -192,7 +230,12 @@ const Login = () => {
               </FormControl>
             )}
 
-            <Button colorScheme="teal" type="submit" isLoading={isSubmitting} loadingText="Submitting...">
+            <Button
+              colorScheme="teal"
+              type="submit"
+              isLoading={isSubmitting}
+              loadingText="Submitting..."
+            >
               {isLoginForm ? "Login" : "Sign Up"}
             </Button>
           </VStack>
