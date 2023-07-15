@@ -74,8 +74,9 @@ npm run start
 <big>Now you can access the application in your web browser at `http://localhost:3000`.</big>
 
 ## <a name="6" id="6"></a> <span style="color: Pink">Known Bugs
-* _Have the application running correctly without an known bugs. I'm still working on a way that we can sell a customer amount instead of one by one._
-* _If I missed something or a bug is found, send me an email to remyfranciscoflores@gmail.com_
+* _Have the application running correctly without any known bugs. I have thoroughly tested and resolved any issues that were identified._
+* _<strong>Contact Page and Login</strong>: I have added a contact page where users can reach out to me for inquiries or feedback. The contact form is set up to send emails directly to my email address. Please note that the current links on the page are placeholders and will be updated with relevant social media links. I am also actively working on implementing a login functionality. Progress has been made, and the user information is securely stored in the database. I am finalizing the remaining steps to enable seamless user login. Once completed, users will be able to access personalized features and information._
+* _If any issues or bugs are discovered, please feel free to reach out to me via email at remyfranciscoflores@gmail.com._
 
 ## <a name="7" id="7"></a><span style="color: Pink">License
 * **SEE LICENSE [HERE](./LICENSE)** 
