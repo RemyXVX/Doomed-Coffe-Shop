@@ -47,6 +47,7 @@ const Login = () => {
   };
 
   const handleInputChange = (e, setter) => {
+    const value =e.target.value;
     setter(e.target.value);
   };
 
@@ -62,7 +63,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    console.log("Form submitted");
+
     if (
       (isLoginForm && (email === "" || password === "")) ||
       (!isLoginForm &&
@@ -81,8 +83,14 @@ const Login = () => {
     }
   
     try {
+      console.log("Email:", email);
+
       if (isLoginForm) {
-        const { user, error } = await supabase.auth.signIn({ email, password });
+        console.log("Sign in with email:", email);
+        const { user, error } = await supabase.auth.signInWithPassword({
+          email: email, 
+          password: password
+        });
   
         if (error) {
           showToast("Error", error.message, "error");
@@ -93,10 +101,12 @@ const Login = () => {
   
         navigate("/user"); // Redirect to the User page
       } else {
+        console.log("Sign up with email:", email);
         const { data: existingUser, error: existingUserError } = await supabase
           .from("auth.users")
           .select("*")
           .eq("email", email)
+          // .limit(1)
           .single();
   
         if (existingUserError) {
@@ -109,7 +119,6 @@ const Login = () => {
           return;
         }
   
-        // Proceed with sign up
         const { user, error } = await supabase.auth.signUp({ email, password });
   
         if (error) {
@@ -132,122 +141,131 @@ const Login = () => {
         navigate("/user"); // Redirect to the User page
       }
     } catch (error) {
+      console.log("Error:", error);
       showToast("Error", error.message, "error");
     }
   };
-  
 
   return (
-    <Box py={8} px={4}>
-      <Flex direction="column" align="center">
-        <Text fontSize="3xl" fontWeight="bold" mb={4}>
-          {isLoginForm ? "Login" : "Sign Up"}
-        </Text>
-        <form onSubmit={handleSubmit}>
-          <VStack spacing={4} align="stretch">
-            <FormControl isRequired>
-              <InputGroup>
-                <InputLeftElement pointerEvents="none" children={<EmailIcon />} />
-                <Input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => handleInputChange(e, setEmail)}
-                  disabled={isSubmitting}
-                />
-              </InputGroup>
-            </FormControl>
+    <Flex
+      minHeight="100vh"
+      width="100%"
+      align="center"
+      justify="center"
+      bg="#EFEFEF"
+    >
+      <Box py={8} px={4} width="sm" bg="white" borderRadius="md" boxShadow="md">
+        <Flex direction="column" align="center">
+          <Text fontSize="3xl" fontWeight="bold" mb={4}>
+            {isLoginForm ? "Login" : "Sign Up"}
+          </Text>
+          <form onSubmit={handleSubmit}>
+            <VStack spacing={4} align="stretch">
+              <FormControl isRequired>
+                <InputGroup>
+                  <InputLeftElement pointerEvents="none" children={<EmailIcon />} />
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => handleInputChange(e, setEmail)}
+                    disabled={isSubmitting}
+                    autoComplete="email"
+                  />
+                </InputGroup>
+              </FormControl>
 
-            {!isLoginForm && (
-              <>
-                <FormControl isRequired>
-                  <InputGroup>
-                    <Input
-                      type="text"
-                      placeholder="First Name"
-                      value={firstName}
-                      onChange={(e) => handleInputChange(e, setFirstName)}
-                      disabled={isSubmitting}
-                    />
-                  </InputGroup>
-                </FormControl>
-                <FormControl isRequired>
-                  <InputGroup>
-                    <Input
-                      type="text"
-                      placeholder="Last Name"
-                      value={lastName}
-                      onChange={(e) => handleInputChange(e, setLastName)}
-                      disabled={isSubmitting}
-                    />
-                  </InputGroup>
-                </FormControl>
-              </>
-            )}
+              {!isLoginForm && (
+                <>
+                  <FormControl isRequired>
+                    <InputGroup>
+                      <Input
+                        type="text"
+                        placeholder="First Name"
+                        value={firstName}
+                        onChange={(e) => handleInputChange(e, setFirstName)}
+                        disabled={isSubmitting}
+                      />
+                    </InputGroup>
+                  </FormControl>
+                  <FormControl isRequired>
+                    <InputGroup>
+                      <Input
+                        type="text"
+                        placeholder="Last Name"
+                        value={lastName}
+                        onChange={(e) => handleInputChange(e, setLastName)}
+                        disabled={isSubmitting}
+                      />
+                    </InputGroup>
+                  </FormControl>
+                </>
+              )}
 
-            <FormControl isRequired>
-              <InputGroup>
-                <InputLeftElement pointerEvents="none" children={<LockIcon />} />
-                <Input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => handleInputChange(e, setPassword)}
-                  disabled={isSubmitting}
-                  autoComplete="current-password"
-                />
-                <InputRightElement>
-                  <Button
-                    variant="ghost"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? <ViewOffIcon /> : <ViewIcon />}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-            </FormControl>
-
-            {!isLoginForm && (
               <FormControl isRequired>
                 <InputGroup>
                   <InputLeftElement pointerEvents="none" children={<LockIcon />} />
                   <Input
-                    type={showPasswordConfirm ? "text" : "password"}
-                    placeholder="Confirm Password"
-                    value={passwordConfirm}
-                    onChange={(e) => handleInputChange(e, setPasswordConfirm)}
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => handleInputChange(e, setPassword)}
                     disabled={isSubmitting}
+                    autoComplete="current-password"
                   />
                   <InputRightElement>
                     <Button
                       variant="ghost"
-                      onClick={() => setShowPasswordConfirm(!showPasswordConfirm)}
+                      onClick={() => setShowPassword(!showPassword)}
                     >
-                      {showPasswordConfirm ? <ViewOffIcon /> : <ViewIcon />}
+                      {showPassword ? <ViewOffIcon /> : <ViewIcon />}
                     </Button>
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
-            )}
 
-            <Button
-              colorScheme="teal"
-              type="submit"
-              isLoading={isSubmitting}
-              loadingText="Submitting..."
-            >
-              {isLoginForm ? "Login" : "Sign Up"}
+              {!isLoginForm && (
+                <FormControl isRequired>
+                  <InputGroup>
+                    <InputLeftElement pointerEvents="none" children={<LockIcon />} />
+                    <Input
+                      type={showPasswordConfirm ? "text" : "password"}
+                      placeholder="Confirm Password"
+                      value={passwordConfirm}
+                      onChange={(e) => handleInputChange(e, setPasswordConfirm)}
+                      disabled={isSubmitting}
+                    />
+                    <InputRightElement>
+                      <Button
+                        variant="ghost"
+                        onClick={() => setShowPasswordConfirm(!showPasswordConfirm)}
+                      >
+                        {showPasswordConfirm ? <ViewOffIcon /> : <ViewIcon />}
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
+                </FormControl>
+              )}
+
+              <Button
+                colorScheme="teal"
+                type="submit"
+                isLoading={isSubmitting}
+                loadingText="Submitting..."
+              >
+                {isLoginForm ? "Login" : "Sign Up"}
+              </Button>
+            </VStack>
+          </form>
+          <Text fontSize="lg" mt={4}>
+            {isLoginForm ? "Don't have an account?" : "Already have an account?"}
+            <Button variant="link" colorScheme="teal" size="sm" onClick={toggleForm} mx={1}>
+              {isLoginForm ? "Sign Up" : "Login"}
             </Button>
-          </VStack>
-        </form>
-        <Text fontSize="lg" mt={4}>
-          {isLoginForm ? "Don't have an account?" : "Already have an account?"}
-          <Button variant="link" colorScheme="teal" size="sm" onClick={toggleForm} mx={1}>
-            {isLoginForm ? "Sign Up" : "Login"}
-          </Button>
-        </Text>
-      </Flex>
-    </Box>
+          </Text>
+        </Flex>
+      </Box>
+    </Flex>
   );
 };
 

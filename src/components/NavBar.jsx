@@ -20,7 +20,7 @@ const Navbar = ({ user, online }) => {
   const { cartItems } = useContext(CartContext);
 
   return (
-    <Flex bg="#EFEFEF" p={4} alignItems="center">
+    <Flex bg="gray.200" p={4} alignItems="center">
       <Container maxW="xl">
         <Flex align="center" justify="space-between">
           <Box>

@@ -55,7 +55,7 @@ const Home = () => {
                 Welcome to our Coffee Distribution Spot! At our company, we take pride in sourcing and supplying the finest coffee beans to local coffee shops. We believe that great coffee starts with exceptional beans. Explore our selection of carefully curated beans from around the world. Whether you prefer the rich flavors of Guatemalan beans, the vibrant notes of Ethiopian coffee, the boldness of Indonesian brews, or the smoothness of Colombian roasts, we have something to satisfy every coffee enthusiast. Choose your desired roast level - from the light, delicate profiles of our Light Roast, to the balanced and full-bodied Medium Roast, or indulge in the deep, intense flavors of our Dark Roast. Select the quantity and size that suits your needs, and get ready to experience coffee like never before. Our beans are available in various package sizes, including Small, Medium, Large, and even the CHONK bag for the true coffee connoisseurs. Start your coffee journey with us today! Fill out the form below to place your order and savor the taste of exceptional coffee. Cheers to the perfect cup!
               </Text>
             </Box>
-            <ChakraLink as={Link} to="/Story" fontSize="lg" fontWeight="bold" mt={4}>
+            <ChakraLink as={Link} to="/About" fontSize="lg" fontWeight="bold" mt={4}>
               Learn More <ArrowForwardIcon ml={2} />
             </ChakraLink>
           </Box>
