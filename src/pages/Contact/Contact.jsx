@@ -26,17 +26,17 @@ const Contact = () => {
       </Box>
       <Box maxW="700px" mx="auto" mb={8}>
         <Box p={4} bg="white" borderRadius="md" boxShadow="md">
-          <form
-            action={process.env.REACT_APP_FORMSUBMIT_EMAIL}
-            method="POST"
-          >
-            <Stack spacing={4} direction="column">
-              <Input type="text" name="name" bg="#F2F2F2" required placeholder="Name" />
-              <Input type="email" name="email" bg="#F2F2F2" required placeholder="Email" />
-              <Textarea name="message" required placeholder="Message" bg="#F2F2F2" />
-              <Button type="submit" colorScheme="yellow" variant="solid">Send</Button>
-            </Stack>
-          </form>
+        <form
+          action="https://formsubmit.co/9dfc99f646e2a0b512e65a4238ed0aec"
+          method="POST"
+        >
+          <Stack spacing={4} direction="column">
+            <Input type="text" name="name" bg="#F2F2F2" required placeholder="Name" />
+            <Input type="email" name="email" bg="#F2F2F2" required placeholder="Email" />
+            <Textarea name="message" required placeholder="Message" bg="#F2F2F2" />
+            <Button type="submit" colorScheme="yellow" variant="solid">Send</Button>
+          </Stack>
+        </form>
         </Box>
       </Box>
       <Flex justify="center" mt={4}>

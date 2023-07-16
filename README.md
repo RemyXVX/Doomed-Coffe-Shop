@@ -17,10 +17,11 @@
 ## <a name="1" id="1"></a><span style="color: Pink">Technologies Used
 * VSCode
 * JavaScript
+* Chakra UI
+* Tailwind
 * JSX
-* Git
-* Node.js
-* React.js
+* Node
+* React
 * Babel
 * ESLint
 
